@@ -1,0 +1,8 @@
+$white: #fff;
+$shadow: rgba(0,0,0,0.3);
+
+.menu {
+    overflow: hidden;
+    background: $white;
+    box-shadow: 0 0 8px $shadow;
+}
