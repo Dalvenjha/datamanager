@@ -4,6 +4,8 @@ $shadow2: rgba(0,0,0,0.05);
 $border: rgba(0,0,0,0.15);
 $border2: rgba(0,0,0,0.05);
 $gris: rgba(0,0,0,0.05);
+$gris2: rgba(0,0,0,0.09);
+$gris3: #cfcfcf;
 $texto: #4b4b4b;
 $blue: #00aeef;
 $transparent: rgba(255,255,255,0.5);
@@ -59,7 +61,7 @@ ul {
         position: relative;
         top: 0;
         left: 0;
-        margin-top: 60px;
+        margin: 30px 0 50px;
 
         li{
             display: block;
@@ -94,7 +96,7 @@ ul {
 
                 &:hover {
                     background: $border2;
-                    border-left: 10px solid $blue;
+                    // border-left: 10px solid $blue;
                     @extend .animate;
 
                     &:after {
@@ -107,7 +109,7 @@ ul {
                 span{
                     pointer-events: none;
                     color: $blue;
-                    margin-right: 6px;
+                    margin-right: 12px;
                 }
             }
 
@@ -125,6 +127,7 @@ ul {
         padding: 8px 14px;
         // box-shadow: 0px 0px 5px $shadow2;
         outline: none!important;
+        margin: 20px 0;
 
         &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: #9b9b9b;
@@ -132,7 +135,182 @@ ul {
     }
 }
 
+.square_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #00aeef;/*Button Color*/
+    color: #FFF;
+    border-bottom: solid 4px #05759e;
+    border-radius: 3px;
+    opacity: 1;
+    @extend .animate;
+
+    &.left-side {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+.square_btn:active {/*on Click*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*Move down*/
+    border-bottom: solid 0px #05759e;/*disappears*/
+    @extend .animate;
+}
+
 .wiki {
     background: $white;
     box-shadow: -1px -1px 5px $shadow;
+    padding: 20px;
+    background: #f8f7f6;
+    height: 100vh;
+    overflow: auto;
+    
+
+    &-values {
+        position: relative;
+        display: flex;
+        width: 80%;
+        min-height: 20px;
+        overflow: hidden;
+
+        &:last-child {
+            margin-bottom: 25px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom: solid 4px $gris3;
+        }
+
+        p{
+            box-sizing: border-box;
+            position: relative;
+            flex: 0 0 50%;
+            line-height: 42px;
+            font-size: 12px;
+            padding: 0 10px;
+            margin: 0;
+            border-right: 1px solid $gris2;
+
+            &:last-child {
+                border: none;
+            }
+        }
+
+        &:nth-child(even) {
+            background: $gris2;
+            
+            p {
+                border-right: 1px solid $gris3;
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+
+        &.head {
+            background: $blue;
+            color: $white;
+
+            p {
+                border-right: 1px solid $white;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+        }
+    }
+
+    &-des {
+        position: relative;
+        font-size: 16px;
+        line-height: 2.2em;
+        color: #9b9b9b; 
+    }
+
+    &::-webkit-scrollbar-track
+        {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar
+        {
+            width: 4px;
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar-thumb
+        {
+            background-color: $blue;
+            border: 2px solid $blue;
+        }
+
+    &-content {
+        margin: 20px auto;
+        padding: 20px;
+        background: $white;
+        border-radius: 8px;
+        border-bottom: 4px solid $gris2; 
+        border-right: 4px solid $gris2; 
+        font-size: 12px;
+        @extend .animate;
+
+        &.edit-mode {
+            transform: translateX(-100%);
+            @extend .animate;
+
+            .square_btn {
+                opacity: 0;
+                @extend .animate;
+            }
+        }
+        
+        h2{
+            display: inline-block;
+            font-size: 24px;
+            line-height: 1.2em;
+            padding: 10px 0;
+            position: relative;
+            margin: 0px 0 15px;
+            text-transform: uppercase;
+
+            &.no-mb {
+                margin-bottom: 0;
+            }
+    
+            &:after {
+                content: "";
+                display: inline-block;
+                width: 33%;
+                height: 0;
+                border-bottom: 4px solid $blue;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+
+        h4{
+            display: inline-block;
+            font-size: 16px;
+            line-height: 1.2em;
+            padding: 5px 0;
+            position: relative;
+            margin: 15px 0;
+            text-transform: uppercase;
+    
+            &:after {
+                content: "";
+                display: inline-block;
+                width: 100%;
+                height: 0;
+                border-bottom: 2px solid $blue;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
 }

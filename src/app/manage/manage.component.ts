@@ -35,6 +35,13 @@ export class ManageComponent implements OnInit {
     this.selectedItem = this.items[indexOfValue];
   }
 
+  _move(event) {
+    let targ = event.target;
+    let parent = targ.parentNode;
+
+    parent.classList.toggle('edit-mode');
+  }
+
   ngOnInit() {
   }
 
