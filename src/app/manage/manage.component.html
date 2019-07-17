@@ -5,12 +5,29 @@
       <input type="text" placeholder="Buscar término" />
     </p>
     <ul>
-      <li *ngFor="let item of items">
-        <p>{{item.nombre}}</p>
+      <li *ngFor="let item of items; let isFirstRow=first" [ngClass]="{'active' : isFirstRow}">
+        <p (click)="_changeItem($event)" class="{{item.id}}"><span class="lnr lnr-code"></span> {{item.nombre}}</p>
       </li>
     </ul>
   </div>
   <div class="col col-md-9 wiki">
-    
+    <div class="wiki-content" *ngIf="selectedItem">
+      <h2>{{selectedItem.nombre}}</h2>
+      <h4>Description</h4>
+      <p>{{selectedItem.description}}</p>
+      <h4>Type</h4>
+      <p>{{selectedItem.type}}</p>
+      <h4>Sensitivity</h4>
+      <p>{{selectedItem.sensitivity}}</p>
+      <h3 class="wiki-content-subtitle">Possible values</h3>
+      <ul class="values head">
+        <li>Value</li>
+        <li>Decription</li>
+      </ul>
+      <ul class="values" *ngFor="let value of selectedItem.values">
+        <li>{{value.value}}</li>
+        <li>{{value.descr}}</li>
+      </ul>
+    </div>
   </div>
 </div>

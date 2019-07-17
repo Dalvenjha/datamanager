@@ -11,4 +11,7 @@ export class FirebaseService {
   getElements() {
     return this.db.collection('definiciones').snapshotChanges();
   }
+  getElement() {
+    return this.db.collection('definiciones').doc('fct0X41JCmuFZm8EGWbC');
+  }
 }

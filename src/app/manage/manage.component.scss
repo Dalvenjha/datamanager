@@ -55,6 +55,68 @@ ul {
         }
     }
 
+    ul {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top: 60px;
+
+        li{
+            display: block;
+            position: relative;
+            line-height: 36px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+
+            p{
+                cursor: pointer;
+                text-transform: uppercase;
+                margin: 0;
+                padding: 0 10px;
+                box-sizing: border-box;
+                width: 100%;
+                line-height: 36px;
+                border-left: 0px solid $blue;
+                @extend .animate;
+
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    height: 0;
+                    width: 33%;
+                    left: 0;
+                    bottom: 0;
+                    border-bottom: 1px solid $border2;
+                    @extend .animate;
+                }
+
+                &:hover {
+                    background: $border2;
+                    border-left: 10px solid $blue;
+                    @extend .animate;
+
+                    &:after {
+                        width: 100%;
+                        border-bottom: 1px solid $blue;
+                        @extend .animate;
+                    }
+                }
+
+                span{
+                    pointer-events: none;
+                    color: $blue;
+                    margin-right: 6px;
+                }
+            }
+
+            &.active p {
+                color: $blue;
+            }
+        }
+    }
+
     input[type=text] {
         background: $transparent;
         border: 0.5pt solid $border2;
