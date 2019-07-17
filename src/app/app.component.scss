@@ -1,8 +1,113 @@
 $white: #fff;
-$shadow: rgba(0,0,0,0.3);
+$shadow: rgba(0,0,0,0.15);
+$border: rgba(0,0,0,0.15);
+
+body,html {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+}
+
+.animate {
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out; 
+}
+
+.wrapper {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+
+    h1,h2,h3,h4,h5,h6 {
+        font-family: 'Muli', sans-serif;
+        font-weight: 900;
+    }
+
+    ul{
+        padding: 0;
+        list-style: none;
+    }
+}
+
+ul{
+    padding: 0;
+    list-style: none;
+}
 
 .menu {
     overflow: hidden;
     background: $white;
-    box-shadow: 0 0 8px $shadow;
+    box-shadow: 0 0 5px $shadow;
+    font-size: 14px;
+    z-index: 100;
+
+    h1{
+        position: relative;
+        display: block;
+        overflow: hidden;
+        padding: 0;
+        margin: 25px auto;
+        text-indent: -9999px;
+        width: 50px;
+        height: 50px;
+        background: url(../assets/img/logo.png) no-repeat center center;
+        background-size: cover; 
+    }
+
+    .main-menu {
+        position: relative;
+        min-height: 20px;
+        overflow: hidden;
+        top: 0;
+        margin-top: 80px;
+        text-align: center;
+
+        li{
+            display: block;
+            position: relative;
+            margin-bottom: 15px;
+            padding: 15px 0;
+
+            &:after {
+                content: "";
+                height: 0;
+                display: inline-block;
+                position: absolute;
+                width: 48px;
+                border-bottom: 0.5pt solid $border;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+            }
+
+            &:last-child:after {
+                display: none;
+            }
+
+            a{
+                color: #6b6b6b;
+                display: block;
+                position: relative;
+                text-decoration: none;
+                @extend .animate;
+
+                &:hover, &.active {
+                    @extend .animate;
+                    color: #00aeef;
+                }
+
+                span{
+                    font-size: 24px;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    z-index: 20;
+    height: 100vh;
+    overflow: auto;
 }

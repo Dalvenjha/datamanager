@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-manage',
   templateUrl: './manage.component.html',
-  styleUrls: ['./manage.component.sass']
+  styleUrls: ['./manage.component.scss']
 })
 export class ManageComponent implements OnInit {
 
