@@ -257,8 +257,20 @@ ul {
         font-size: 12px;
         @extend .animate;
 
+        &.floating {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-top: 20px;
+            transform: translateX(200%);
+
+            &.editer {
+                transform: translateX(-50%);
+            }
+        }
+
         &.edit-mode {
-            transform: translateX(-100%);
+            transform: translateX(-115%);
             @extend .animate;
 
             .square_btn {

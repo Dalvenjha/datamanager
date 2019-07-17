@@ -37,5 +37,31 @@
         <p>{{value.descr}}</p>
       </div>
     </div>
+
+    <div class="wiki-content col col-md-8 floating" *ngIf="selectedItem">
+        <a href="#" class="square_btn left-side" (click)="_move($event)"><span class="lnr lbr-pencil"></span> Edit this</a>
+      <h2 class="no-mb">{{selectedItem.nombre}}</h2>
+      <p class="wiki-des">(Literal: {{selectedItem.nombre}})</p>
+      <h4>Description</h4>
+      <p>{{selectedItem.description}}</p>
+      <h4>Type</h4>
+      <p>{{selectedItem.type}}</p>
+      <h4>Sensitivity</h4>
+      <p *ngIf="selectedItem.sensitivity">
+        This is personal data, and can not be distributed in RAW form.
+      </p>
+      <p *ngIf="!selectedItem.sensitivity">
+        This is not personal data, you can distribute it in RAW form.
+      </p>
+      <h2 class="wiki-content-subtitle">Possible values</h2>
+      <div class="wiki-values head">
+        <p>Value</p>
+        <p>Decription</p>
+      </div>
+      <div class="wiki-values" *ngFor="let value of selectedItem.values">
+        <p>{{value.value}}</p>
+        <p>{{value.descr}}</p>
+      </div>
+    </div>
   </div>
 </div>
