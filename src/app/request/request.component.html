@@ -1,3 +1,23 @@
-<p>
-  request works!
-</p>
+<div class="row">
+  <div class="col col-md-10 offset-md-1 tables">
+    <h2>Requests</h2>
+    <div class="tabs">
+      <p class="active" (click)="_filterArray($event)" rel="all"><span class="lnr lnr-pointer-up"></span> All</p>
+      <p (click)="_filterArray($event)" rel="approved"><span class="lnr lnr-thumbs-up"></span> Approved</p>
+      <p (click)="_filterArray($event)" rel="pending"><span class="lnr lnr-hand"></span> Pending</p>
+      <p (click)="_filterArray($event)" rel="denied"><span class="lnr lnr-thumbs-down"></span> Denied</p>
+    </div>
+    <div class="tab" *ngIf="selectedItems">
+      <div class="tab-values head">
+        <p>Date</p>
+        <p>Reason</p>
+        <p>Status</p>
+      </div>
+      <div class="tab-values" *ngFor="let value of selectedItems">
+        <p>{{value.date}}</p>
+        <p>{{value.reason}}</p>
+        <p><span class="{{value.status}}">{{value.status}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>

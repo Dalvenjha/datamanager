@@ -12,6 +12,10 @@ export class FirebaseService {
     return this.db.collection('definiciones').snapshotChanges();
   }
 
+  getRequests() {
+    return this.db.collection('requests').snapshotChanges();
+  }
+
   getValues() {
     return this.db.collection('comingvalues').snapshotChanges();
   }
