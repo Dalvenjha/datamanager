@@ -17,7 +17,9 @@ export class ManageComponent implements OnInit {
   values: Valor[];
   selectedItem;
   fireForm: FormGroup;
+  valueForm: FormGroup;
   valueId: string = '';
+  addValue = false;
 
   constructor(private router: Router, private fb: FormBuilder, private fireService: FirebaseService, private firestore: AngularFirestore) {
     this.fireService.getElements().subscribe(actionArray => {
@@ -45,6 +47,7 @@ export class ManageComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.createValueForm();
   }
 
   createForm() {
@@ -53,6 +56,13 @@ export class ManageComponent implements OnInit {
       description: [''],
       type: [''],
       sensitivity: ['']
+    });
+  }
+
+  createValueForm() {
+    this.valueForm = this.fb.group({
+      key: [''],
+      value: ['']
     });
   }
 
@@ -101,6 +111,10 @@ export class ManageComponent implements OnInit {
     editr.classList.toggle('edit-mode');
   }
 
+  _changeValue() {
+    this.addValue = false;
+  }
+
   onSubmit(value){
     value.id = this.selectedItem.id;
     if(value.nombre == '') {
@@ -124,8 +138,30 @@ export class ManageComponent implements OnInit {
     )
   }
 
-  _add(event) {
+  onSubmitValue(value){
+    if(value.nombre == '') {
+      value.nombre = this.selectedItem.nombre;
+    }
+    if(value.description == '') {
+      value.description = this.selectedItem.description;
+    }
+    if(value.type == '') {
+      value.type = this.selectedItem.type;
+    }
+    if(value.sensitivity == '') {
+      value.sensitivity = this.selectedItem.sensitivity;
+    }
+    console.log(value);
+    this.fireService.createValue(value)
+    .then(
+      res => {
+        this._changeValue();
+      }
+    )
+  }
 
+  _add(event) {
+    this.addValue = true;
   }
 
 

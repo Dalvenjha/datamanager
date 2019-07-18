@@ -29,6 +29,13 @@ export class FirebaseService {
     });
   }
 
+  createValue(value){
+    return this.db.collection('comingvalues').add({
+      key: value.key,
+      value: value.value
+    });
+  }
+
   updateData(value){
     return this.db.collection('definiciones').doc(value.id).update(value);
   }

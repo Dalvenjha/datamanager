@@ -155,6 +155,11 @@ ul {
   opacity: 1;
   @extend .animate;
 
+  &.top {
+    margin-top: 20px;
+    position: relative;
+  }
+
   span {
     pointer-events: none;
   }

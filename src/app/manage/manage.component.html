@@ -37,7 +37,21 @@
         <p>{{value.key}}</p>
         <p>{{value.value}}</p>
       </div>
-      <a href="#" class="square_btn" (click)="_add($event)"><span class="lnr lnr-frame-contract"></span> Add possible value</a>
+      <a href="#" class="square_btn  top" (click)="_add($event)"><span class="lnr lnr-frame-contract"></span> Add possible
+        value</a>
+      <div class="sequitur" *ngIf="addValue">
+        <form class="create-form" [formGroup]="valueForm" novalidate (ngSubmit)="onSubmitValue(valueForm.value)">
+          <p>
+            <input type="text" placeholder="Key" formControlName="key" />
+          </p>
+          <p>
+            <input type="text" placeholder="Value" formControlName="value" />
+          </p>
+          <button class="square_btn" color="primary" type="submit"><span class="lnr lnr-lock"></span>
+            Save</button>
+        </form>
+      </div>
+      
     </div>
 
     <div class="wiki-content col col-md-10 floating" id="editsection" *ngIf="selectedItem">
