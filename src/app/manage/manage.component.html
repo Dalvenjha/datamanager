@@ -12,7 +12,7 @@
     <a href="#" class="square_btn">Add new Key</a>
   </div>
   <div class="col col-md-9 wiki">
-    <div class="wiki-content col col-md-8" id="contsection" *ngIf="selectedItem">
+    <div class="wiki-content col col-md-10" id="contsection" *ngIf="selectedItem">
       <a href="#" class="square_btn left-side" (click)="_move($event)"><span class="lnr lnr-pencil"></span> Edit
         this</a>
       <h2 class="no-mb">{{selectedItem.nombre}}</h2>
@@ -40,7 +40,7 @@
       <a href="#" class="square_btn" (click)="_add($event)"><span class="lnr lnr-frame-contract"></span> Add possible value</a>
     </div>
 
-    <div class="wiki-content col col-md-8 floating" id="editsection" *ngIf="selectedItem">
+    <div class="wiki-content col col-md-10 floating" id="editsection" *ngIf="selectedItem">
       <form class="create-form" [formGroup]="fireForm" novalidate (ngSubmit)="onSubmit(fireForm.value)">
         <!-- <a href="#" class="square_btn left-side" (click)="_save($event)"><span class="lnr lnr-lock"></span> Save</a> -->
         <button class="square_btn left-side" color="primary" type="submit"><span class="lnr lnr-lock"></span>
