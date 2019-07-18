@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './firebase.service';
 
@@ -33,7 +34,7 @@ import { FirebaseService } from './firebase.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService,AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@
         <p (click)="_changeItem($event)" class="{{item.id}}"><span class="lnr lnr-code"></span> {{item.nombre}}</p>
       </li>
     </ul>
-    <a href="#" class="square_btn">Add new Key</a>
+    <a href="#" (click)="_gotoEdit($event)" class="square_btn">Add new Key</a>
   </div>
   <div class="col col-md-9 wiki">
     <div class="wiki-content col col-md-10" id="contsection" *ngIf="selectedItem">
@@ -64,7 +64,7 @@
 
         <h4>Sensitivity</h4>
         <p>
-          <input type="checkbox" formControlName="sensitivity" /> this personal data?
+          <input type="checkbox" formControlName="sensitivity" /> is this personal data?
         </p>
 
         <h2 class="wiki-content-subtitle">Possible values</h2>

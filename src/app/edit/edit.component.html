@@ -1,3 +1,32 @@
-<p>
-  edit works!
-</p>
+<div class="row">
+  <div class="col col-md-12 wiki">
+    <div class="wiki-content col col-md-8">
+      <form class="create-form" [formGroup]="fireForm" novalidate (ngSubmit)="onSubmit(fireForm.value)">
+        <!-- <a href="#" class="square_btn left-side" (click)="_save($event)"><span class="lnr lnr-lock"></span> Save</a> -->
+        <button class="square_btn left-side" color="primary" type="submit"><span class="lnr lnr-lock"></span>
+          Save</button>
+        <h2 class="no-mb">Create element</h2>
+        <p class="wiki-des">Please, fill the form in order to create a new element.</p>
+        <h4>Key Name</h4>
+        <p>
+          <input type="text" placeholder="Nombre" formControlName="nombre" />
+        </p>
+        <h4>Description</h4>
+        <p>
+          <textarea formControlName="description" placeholder="Descripción"></textarea>
+        </p>
+        <h4>Type</h4>
+        <p>
+          <select formControlName="type">
+            <option *ngFor="let value of values">{{value.key}}</option>
+          </select>
+        </p>
+
+        <h4>Sensitivity</h4>
+        <p>
+          <input type="checkbox" formControlName="sensitivity" /> is this personal data?
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

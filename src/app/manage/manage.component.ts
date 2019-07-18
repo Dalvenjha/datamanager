@@ -4,6 +4,7 @@ import { Valor } from './valors.class';
 import { FirebaseService } from '../firebase.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage',
@@ -18,7 +19,7 @@ export class ManageComponent implements OnInit {
   fireForm: FormGroup;
   valueId: string = '';
 
-  constructor(private fb: FormBuilder, private fireService: FirebaseService, private firestore: AngularFirestore) {
+  constructor(private router: Router, private fb: FormBuilder, private fireService: FirebaseService, private firestore: AngularFirestore) {
     this.fireService.getElements().subscribe(actionArray => {
       this.items = actionArray.map(item => {
         return {
@@ -53,6 +54,11 @@ export class ManageComponent implements OnInit {
       type: [''],
       sensitivity: ['']
     });
+  }
+
+  _gotoEdit(event) {
+    event.preventDefault();
+    this.router.navigate(['/edit']);
   }
 
   _changeItem(event) {
