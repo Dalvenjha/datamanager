@@ -4,5 +4,4 @@ export class Item {
     description: string;
     sensitivity: boolean;
     type: string;
-    values: [];
 }

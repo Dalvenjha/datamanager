@@ -11,7 +11,21 @@ export class FirebaseService {
   getElements() {
     return this.db.collection('definiciones').snapshotChanges();
   }
-  getElement() {
-    return this.db.collection('definiciones').doc('fct0X41JCmuFZm8EGWbC');
+
+  getValues() {
+    return this.db.collection('comingvalues').snapshotChanges();
+  }
+
+  createUser(value){
+    return this.db.collection('definiciones').add({
+      nombre: value.nombre,
+      description: value.description,
+      type: value.type,
+      sensitivity: value.sensitivity
+    });
+  }
+
+  updateData(value){
+    return this.db.collection('definiciones').doc(value.id).update(value);
   }
 }
