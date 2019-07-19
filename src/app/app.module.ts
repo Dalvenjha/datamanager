@@ -28,6 +28,7 @@ import { FirebaseService } from './firebase.service';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [FirebaseService],

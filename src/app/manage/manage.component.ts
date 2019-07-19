@@ -18,8 +18,13 @@ export class ManageComponent implements OnInit {
   selectedItem;
   fireForm: FormGroup;
   valueForm: FormGroup;
+  nombre: string = '';
   valueId: string = '';
   addValue = false;
+
+  lastkeydown1: number = 0;
+  subscription: any;
+  userList1 = [];
 
   constructor(private router: Router, private fb: FormBuilder, private fireService: FirebaseService, private firestore: AngularFirestore) {
     this.fireService.getElements().subscribe(actionArray => {
@@ -31,6 +36,8 @@ export class ManageComponent implements OnInit {
       })
       let sel = this.items[0];
       this.selectedItem = sel;
+      let sels = this.items;
+      this.userList1 = sels;
     });
 
     this.fireService.getValues().subscribe(actionArray => {
@@ -41,8 +48,39 @@ export class ManageComponent implements OnInit {
         } as Valor;
       })
     });
-    
+
   }
+
+  //  testing autocomplete
+
+  getUserIdsFirstWay($event) {
+    let userId = (<HTMLInputElement>document.getElementById('autocomplete')).value;
+    this.userList1 = [];
+    console.log(userId);
+
+    if (userId.length > 1) {
+      if ($event.timeStamp - this.lastkeydown1 > 200) {
+        this.searchFromArray(this.items, userId);
+      }
+    } else {
+      this.userList1 = this.items;
+    }
+  }
+
+  searchFromArray(arr, regex) {
+    let matches = [], i;
+    for (i = 0; i < arr.length; i++) {
+      let stringprin = arr[i].nombre;
+      let strinchange = stringprin.toLowerCase();
+      let regexed = regex.toLowerCase();
+      if (strinchange.includes(regexed)) {
+        this.userList1.push(arr[i]);
+        console.log(this.userList1);
+      }
+    }
+  };
+
+  // testing autocomplete
 
 
   ngOnInit() {
@@ -79,7 +117,7 @@ export class ManageComponent implements OnInit {
     var indexOfValue = this.items.findIndex(i => i.id === valued);
     console.log(indexOfValue);
     this.selectedItem = this.items[indexOfValue];
-    for(let i = 0; i < elms.length; i++) {
+    for (let i = 0; i < elms.length; i++) {
       elms[i].classList.remove('active');
     };
     targ.parentNode.classList.add('active');
@@ -115,49 +153,49 @@ export class ManageComponent implements OnInit {
     this.addValue = false;
   }
 
-  onSubmit(value){
+  onSubmit(value) {
     value.id = this.selectedItem.id;
-    if(value.nombre == '') {
+    if (value.nombre == '') {
       value.nombre = this.selectedItem.nombre;
     }
-    if(value.description == '') {
+    if (value.description == '') {
       value.description = this.selectedItem.description;
     }
-    if(value.type == '') {
+    if (value.type == '') {
       value.type = this.selectedItem.type;
     }
-    if(value.sensitivity == '') {
+    if (value.sensitivity == '') {
       value.sensitivity = this.selectedItem.sensitivity;
     }
     console.log(value);
     this.fireService.updateData(value)
-    .then(
-      res => {
-        this.resetFields();
-      }
-    )
+      .then(
+        res => {
+          this.resetFields();
+        }
+      )
   }
 
-  onSubmitValue(value){
-    if(value.nombre == '') {
+  onSubmitValue(value) {
+    if (value.nombre == '') {
       value.nombre = this.selectedItem.nombre;
     }
-    if(value.description == '') {
+    if (value.description == '') {
       value.description = this.selectedItem.description;
     }
-    if(value.type == '') {
+    if (value.type == '') {
       value.type = this.selectedItem.type;
     }
-    if(value.sensitivity == '') {
+    if (value.sensitivity == '') {
       value.sensitivity = this.selectedItem.sensitivity;
     }
     console.log(value);
     this.fireService.createValue(value)
-    .then(
-      res => {
-        this._changeValue();
-      }
-    )
+      .then(
+        res => {
+          this._changeValue();
+        }
+      )
   }
 
   _add(event) {

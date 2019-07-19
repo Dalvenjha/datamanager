@@ -2,10 +2,10 @@
   <div class="col col-md-3 search">
     <h2>Concepts</h2>
     <p>
-      <input type="text" placeholder="Buscar término" />
+      <input type="text" id="autocomplete" (keyup)="getUserIdsFirstWay($event)" [(ngModel)]="nombre" placeholder="Buscar término" />
     </p>
     <ul id="options">
-      <li *ngFor="let item of items; let isFirstRow=first" [ngClass]="{'active' : isFirstRow}">
+      <li *ngFor="let item of userList1; let isFirstRow=first" [ngClass]="{'active' : isFirstRow}">
         <p (click)="_changeItem($event)" class="{{item.id}}"><span class="lnr lnr-code"></span> {{item.nombre}}</p>
       </li>
     </ul>
