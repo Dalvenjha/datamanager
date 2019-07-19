@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
   regists: Regist[];
   values: Valor[];
   fireForm: FormGroup;
+  hasError = false;
 
   constructor(private router: Router, private fb: FormBuilder, private fireService: FirebaseService, private firestore: AngularFirestore) { 
     this.fireService.getValues().subscribe(actionArray => {
@@ -48,21 +49,22 @@ export class EditComponent implements OnInit {
 
   onSubmit(value){
     if(value.nombre == '') {
-      
+      this.hasError = true;
+      return false;
     }
     if(value.description == '') {
-      
+      this.hasError = true;
+      return false;
     }
     if(value.type == '') {
-      
-    }
-    if(value.sensitivity == '') {
-      
+      this.hasError = true;
+      return false;
     }
     console.log(value);
     this.fireService.createUser(value)
     .then(
       res => {
+        this.hasError = false;
         this.resetFields();
       }
     )
