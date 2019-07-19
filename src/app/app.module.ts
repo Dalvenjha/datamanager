@@ -9,11 +9,9 @@ import { RequestComponent } from './request/request.component';
 import { ReviewComponent } from './review/review.component';
 import { EditComponent } from './edit/edit.component';
 
-import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './firebase.service';
 
@@ -28,13 +26,11 @@ import { FirebaseService } from './firebase.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [FirebaseService,AngularFirestore],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

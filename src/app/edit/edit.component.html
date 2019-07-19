@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col col-md-12 wiki">
     <div class="wiki-content col col-md-8">
-      <form class="create-form" [formGroup]="fireForm" novalidate (ngSubmit)="onSubmit(fireForm.value)">
+      <form class="create-form" [formGroup]="fireForm" (ngSubmit)="onSubmit(fireForm.value)">
         <!-- <a href="#" class="square_btn left-side" (click)="_save($event)"><span class="lnr lnr-lock"></span> Save</a> -->
         <button class="square_btn left-side" color="primary" type="submit"><span class="lnr lnr-lock"></span>
           Save</button>
