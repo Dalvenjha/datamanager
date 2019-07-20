@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManageComponent } from './manage.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -16,7 +17,7 @@ describe('ManageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ManageComponent ],
-      imports: [ReactiveFormsModule,RouterTestingModule,AngularFireModule.initializeApp(environment.firebase)],
+      imports: [FormsModule,ReactiveFormsModule,RouterTestingModule,AngularFireModule.initializeApp(environment.firebase)],
       providers: [AngularFirestore]
     })
     .compileComponents();
